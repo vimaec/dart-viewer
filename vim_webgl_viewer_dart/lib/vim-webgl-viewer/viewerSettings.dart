@@ -6,9 +6,9 @@ import 'package:three_dart/three_dart.dart' as THREE;
 import '../vim-loader/vimSettings.dart';
 
 class ColorRGB {
-  final num r;
-  final num g;
-  final num b;
+  final double r;
+  final double g;
+  final double b;
 
   const ColorRGB({
     required this.r,
@@ -18,9 +18,9 @@ class ColorRGB {
 }
 
 class ColorHSL {
-  final num h;
-  final num s;
-  final num l;
+  final double h;
+  final double s;
+  final double l;
 
   const ColorHSL({
     required this.h,

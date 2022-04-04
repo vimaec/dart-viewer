@@ -27,7 +27,7 @@ class _GroundPlane {
     mesh.visible = settings.groundPlaneShow;
     // Looks
     _applyTexture(settings.groundPlaneTextureUrl);
-    _material.color?.copy(settings.groundPlaneColor);
+    _material.color.copy(settings.groundPlaneColor);
     _material.opacity = settings.groundPlaneOpacity;
   }
 

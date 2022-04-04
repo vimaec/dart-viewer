@@ -26,13 +26,13 @@ class PlatformPlugin {
     this._vimSettings = const VimSettings(),
   ]);
 
-  Future<int> generateId(int width, int height, double dpr) async {
+  Future<int> generateId(double width, double height, double dpr) async {
     final initData = await _gl.init(width, height, dpr);
     await _gl.hasContext();
     return initData['textureId'];
   }
 
-  Viewer createViewer(int width, int height, double dpr) {
+  Viewer createViewer(double width, double height, double dpr) {
     _disposeViewer();
     final renderer = _gl.makeRenderer(width, height, dpr);
     final view = Viewer(_gl, renderer, _viewerSettings);
@@ -40,7 +40,7 @@ class PlatformPlugin {
     return view;
   }
 
-  bool createAndLoad(int width, int height, double dpr, Vim vim) {
+  bool createAndLoad(double width, double height, double dpr, Vim vim) {
     final viewer = createViewer(width, height, dpr);
     return viewer.loadVim(vim, _vimSettings);
   }
@@ -52,7 +52,11 @@ class PlatformPlugin {
 }
 
 extension Gl on FlutterGlPlugin {
-  Future<Map<String, dynamic>> init(int width, int height, double dpr) async {
+  Future<Map<String, dynamic>> init(
+    double width,
+    double height,
+    double dpr,
+  ) async {
     final plug = await initialize(options: {
       'antialias': true,
       'alpha': false,
@@ -72,7 +76,7 @@ extension Gl on FlutterGlPlugin {
     return isInitialized;
   }
 
-  Renderer makeRenderer(int width, int height, double dpr) {
+  Renderer makeRenderer(double width, double height, double dpr) {
     final webGl = THREE.WebGLRenderer({
       'width': width,
       'height': height,
@@ -92,8 +96,8 @@ extension Gl on FlutterGlPlugin {
 
     if (!kIsWeb) {
       final renderTarget = THREE.WebGLMultisampleRenderTarget(
-        (width * dpr).toInt(),
-        (height * dpr).toInt(),
+        width * dpr,
+        height * dpr,
         THREE.WebGLRenderTargetOptions({
           // 'minFilter': THREE.LinearFilter,
           // 'magFilter': THREE.LinearFilter,

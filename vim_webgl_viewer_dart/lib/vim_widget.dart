@@ -36,8 +36,8 @@ class _VimWidgetState extends State<VimWidget> {
   @override
   Widget build(BuildContext context) {
     final mdq = MediaQuery.of(context);
-    final width = mdq.size.width.toInt();
-    final height = mdq.size.height.toInt();
+    final width = mdq.size.width;
+    final height = mdq.size.height;
     final dpr = mdq.devicePixelRatio;
 
     return FutureBuilder(

@@ -6,9 +6,9 @@ import 'package:three_dart/three_dart.dart' as THREE;
 import 'transparency.dart';
 
 class Vector3 {
-  final num x;
-  final num y;
-  final num z;
+  final double x;
+  final double y;
+  final double z;
 
   const Vector3({
     required this.x,
@@ -23,7 +23,7 @@ class Root {
   // Rotation for the vim
   final Vector3 rotation;
   //Scale factor for the vim
-  final num scale;
+  final double scale;
   //Defines how to draw or not to draw objects according to their transparency
   final Mode transparency;
 
@@ -78,7 +78,7 @@ class VimSettings {
   THREE.Vector3 _toVec(Vector3 obj) => THREE.Vector3(obj.x, obj.y, obj.z);
   THREE.Quaternion _toQuaternion(Vector3 rot) =>
       THREE.Quaternion().setFromEuler(_toEuler(_toVec(rot)), true);
-  THREE.Vector3 _scalarToVec(num x) => THREE.Vector3(x, x, x);
+  THREE.Vector3 _scalarToVec(double x) => THREE.Vector3(x, x, x);
   THREE.Euler _toEuler(THREE.Vector3 rot) => THREE.Euler(
       (rot.x * THREE.Math.PI) / 180,
       (rot.y * THREE.Math.PI) / 180,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vim_webgl_viewer_dart/vim-loader/loader.dart';
 
 import 'home.dart';
 
